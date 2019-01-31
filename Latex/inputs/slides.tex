@@ -182,19 +182,57 @@ $
 \end{frame}
 
 
-\begin{frame}\frametitle{}
-\begin{block}{}
+\begin{frame}\frametitle{How to compute unknown values ?}
+\begin{block}{Estimators of unknown values}
   \begin{itemize}
-    \item
+    \item spot price: $\widehat { \pi } _ { k } ^ { ( S ) } = \mathbb { E } \left\{ \pi _ { k } ^ { ( S ) } \right\}$
+    \item spread between spot and imbalance prices :
+\begin{itemize}
+  \item Down : $\widehat { \psi } _ { k \left| \psi _ { k } ^ { ( \downarrow ) } < 0 \right. } ^ { ( \downarrow ) } = \mathbb { E } \left\{ \psi _ { k } ^ { ( \downarrow ) } | \psi _ { k } ^ { ( \downarrow ) } < 0 \right\}$
+  \item Up : $\widehat { \psi } _ { k \left| \psi _ { k } ^ { ( \uparrow ) } > 0 \right. } ^ { ( \uparrow ) } = \mathbb { E } \left\{ \psi _ { k } ^ { ( \uparrow ) } | \psi _ { k } ^ { ( \uparrow ) } > 0 \right\}$
+\end{itemize}
+  \end{itemize}
+\end{block}
+
+\begin{block}{Remark}
+  \begin{itemize}
+    \item $P _ { k } ^ { ( \downarrow ) } = P \left\{ \psi _ { k } ^ { ( \downarrow ) } < 0 \right\}$ and $P _ { k } ^ { ( \uparrow ) } = P \left\{ \psi _ { k } ^ { ( \uparrow ) } > 0 \right\}$ need to be computed
+    \item $\ldots$ since $\widehat { \psi } _ { k } ^ { ( \downarrow ) } \neq \widehat { \psi } _ { k \left| \psi _ { k } ^ { ( \downarrow ) } <0\right. } ^ { ( \downarrow ) } $ but $\widehat { \psi } _ { k } ^ { ( \downarrow ) } = \widehat { \psi } _ { k \left| \psi _ { k } ^ { ( \downarrow ) } < 0 \right. } ^ { ( \downarrow ) }\cdot  {\color{red} P _ { k } ^ { ( \downarrow ) }}$
+    \item $\ldots$ same for $\widehat { \psi } _ { k } ^ { ( \uparrow ) } \ldots$
   \end{itemize}
 \end{block}
 \end{frame}
 
 
-\begin{frame}\frametitle{}
-\begin{block}{}
+\begin{frame}\frametitle{How to compute unknown values ?}
+\begin{block}{Estimators of $P _ { k } ^ { ( \downarrow ) }$ and $P _ { k } ^ { ( \uparrow ) }$}
   \begin{itemize}
-    \item
+    \item $P _ { k } ^ { ( \downarrow ) } = P \left\{ \psi _ { k } ^ { ( \downarrow ) } < 0 \right\}$
+    \item $P _ { k } ^ { ( \uparrow ) } = P \left\{ \psi _ { k } ^ { ( \uparrow ) } > 0 \right\}$
+  \end{itemize}
+\end{block}
+
+\begin{exampleblock}{Example of forecast probabilities of up and down}
+  \begin{figure}
+    \centering
+      \includegraphics[width=0.5\textwidth]{saldo}
+  \end{figure}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{block}{A successful strategy ?}
+  \begin{itemize}
+  \item Simulation results show a PNL of $1OO$K euros /MW from the
+  1st March 2008 to the 31st December 2008.
+  \item not modeling its interaction with the system. An aggresive position can
+  make the system switch $\ldots$
+  \item Model improvements ?
+  \begin{itemize}
+    \item Imposing new constraints through a \textit{risk-aversion parameter}$\ldots$
+    \item $\widetilde { W } _ { k } ^ { v , a _ { v } } = \min \left\{ \max \left\{ \widetilde { W } _ { k } , \widehat { W } _ { k } \cdot \left( 1 - a _ { v } \right) \right\} , \widehat { W } _ { k } \cdot \left( 1 + a _ { v } \right) \right\}$
+    \item $\ldots$ where $a _ { v }\in \acc{0.1, 0.2}$
+  \end{itemize}
   \end{itemize}
 \end{block}
 \end{frame}
