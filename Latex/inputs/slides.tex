@@ -49,7 +49,7 @@
   % trop d'imbalance dans le systeme. D'autant plus que c'est un facteur important
   % a prendre en compte car si en italie l'imbalance du au curtailment est recompense
   % au prix du DA ce n'est pas le cas en allemagne, donc c'est un grand facteur de risque
-  \item PTU (\textit{Program Time Unit}) are independent : no market dynamic.
+  \item PTU (\textit{Program Time Units}) are independent : no market dynamic.
   % utile pour pouvoir les traités à part
   \item Imbalance volumes are never rewarded
   %je ne connais pas un marché ou ce soit vrai.
@@ -57,48 +57,144 @@
 \end{block}
 \end{frame}
 
-%
-% \begin{frame}\frametitle{blocs}
-%
-% \begin{block}{title of the bloc}
-% bloc text
-% \end{block}
-%
-% \begin{exampleblock}{title of the bloc}
-% bloc text
-% \end{exampleblock}
-%
-%
-% \begin{alertblock}{title of the bloc}
-% bloc text
-% \end{alertblock}
-% \end{frame}
-%
-% \begin{frame}\frametitle{splitting screen}
-% \begin{columns}
-% \begin{column}{5cm}
-%
-%
-% \begin{itemize}
-% \item Beamer
-% \item Beamer Class
-% \item Beamer Class Latex
-% \end{itemize}
-%
-% \end{column}
-% \begin{column}{5cm}
-%
-% \begin{tabular}{|c|c|}
-% \hline
-% \textbf{Instructor} & \textbf{Title} \\
-% \hline
-% Sascha Frank &  \LaTeX \ Course 1 \\
-% \hline
-% Sascha Frank &  Course serial  \\
-% \hline
-% \end{tabular}
-%
-% \end{column}
-% \end{columns}
-%
-% \end{frame}
+
+\begin{frame}\frametitle{Notations}
+  \begin{block}{Notations}
+  \begin{itemize}
+    \item $k$ : a specific PTU
+    \item $\widetilde { W } _ { k }$ : amount of energy contracted in the spot market
+    \item $W _ { k }$ : stochastic production of wind energy
+    \item $\rho _ { k }$ : revenue
+    \item $\rho _ { k } ^ { ( S ) }$ : revenue from spot
+    \item $\rho _ { k } ^ { ( \uparrow / \downarrow ) }$ : revenue from balancing
+    \item $\pi _ { k } ^ { ( S ) }$ : spot market price
+    \item $\pi _ { k } ^ { ( \downarrow ) }$ : down-regulation price
+    \item $\pi _ { k } ^ { ( \uparrow ) }$ : up-regulation price
+  \end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Some relations}
+  \begin{block}{Relations that hold}
+
+  \begin{itemize}
+    \item $\rho _ { k } = \rho _ { k } ^ { ( S ) } + \rho _ { k } ^ { ( \uparrow / \downarrow ) }$
+    \item $\rho _ { k } ^ { ( S ) } = \pi _ { k } ^ { ( S ) } \widetilde { W } _ { k }$
+    \item $\rho _ { k } ^ { ( \uparrow / \downarrow ) } = \left\{ \begin{array} { l l } { \pi _ { k } ^ { ( \downarrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) , } & { W _ { k } \geq \widetilde { W } _ { k } } \\ { \pi _ { k } ^ { ( \uparrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) , } & { W _ { k } < \widetilde { W } _ { k } } \end{array} \right.$
+    \item $\pi _ { k } ^ { ( \downarrow ) } \leq \pi _ { k } ^ { ( S ) }
+    \leq \pi _ { k } ^ { ( \uparrow ) }$
+  \end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Reformulating the revenue}
+  \begin{block}{Reformulating the revenue}
+
+  \begin{itemize}
+    \item $\rho _ { k } = \pi _ { k } ^ { ( S ) } W _ { k } + C _ { k } ^ { ( \uparrow / \downarrow ) }$
+    \item $C _ { k } ^ { ( \uparrow / \downarrow ) } = \left\{ \begin{array} { l l } { \psi _ { k } ^ { ( \downarrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) , } & { W _ { k } \geq \widetilde { W } _ { k } } \\ { \psi _ { k } ^ { ( \uparrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) , } & { W _ { k } < \widetilde { W } _ { k } } \end{array} \right.$
+    \item $\psi _ { k } ^ { ( \downarrow ) } = \pi _ { k } ^ { ( \downarrow ) } - \pi _ { k } ^ { ( S ) }$
+    \item $\psi _ { k } ^ { ( \uparrow ) } = \pi _ { k } ^ { ( \uparrow ) } - \pi _ { k } ^ { ( S ) }$
+  \end{itemize}
+\end{block}
+
+\begin{block}{Idea}
+\begin{itemize}
+  \item $\text{revenue} = \left(\text{term ind. from } \widetilde { W } _ { k }\right)
+  + \left(\Delta \text{price } \cdot \Delta \text{imb. volumes}\right)$
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Maximazing the revenue}
+  \begin{block}{Expected Utility Maximization (EUM)}
+
+  \begin{itemize}
+    \item We want to find $\widetilde { W } _ { k } = \underset { \widetilde { W } _ { k } } { \arg \max } \mathbb { E } \left\{ \rho _ { k } \right\}$
+   \item $\ldots$ which becomes $\widetilde { W } _ { k } = \underset { \overline { W } _ { k } } { \arg \max } \mathbb { E } \left\{ C _ { k } ^ { ( \uparrow / \downarrow ) } \right\}$
+  \end{itemize}
+\end{block}
+
+\begin{block}{Reformulating $C _ { k } ^ { ( \uparrow / \downarrow ) }$}
+
+  \begin{itemize}
+    \item
+$
+  \mathbb { E } \left\{ C _ { k } ^ { ( \downarrow / \uparrow ) } \right\} = \underbrace{\int _ { 0 } ^ { + \infty } \int _ { 0 } ^ { \widetilde { W } _ { k } } \psi _ { k } ^ { ( \uparrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) d P _ { W _ { k } } d P _ { \psi _ { k } ^ { ( \uparrow ) } }}_{\widetilde { W } _ { k }\geq W_k \text{: short position}}$ $
++ \underbrace{\int _ { - \infty } ^ { 0 } \int _ { \widetilde { W } _ { k } } ^ { W ^ { ( m a x ) } } \psi _ { k } ^ { ( \downarrow ) } \left( W _ { k } - \widetilde { W } _ { k } \right) d P _ { W _ { k } } d P _ { \psi _ { k } ^ { ( 1 ) } }}_{\widetilde { W } _ { k }< W_k \text{: long position}}
+$
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{A stochastic optimization problem}
+  \begin{block}{A stochastic optimization problem}
+
+  \begin{itemize}
+    \item Idea:  getting rid of $\psi _ { k } ^ { ( \downarrow ) }$ and $\psi _ { k } ^ { ( \uparrow ) }$
+    \item $\mathbb { E } \left\{ C _ { k } ^ { ( \downarrow / \uparrow ) } \right\} = \widehat { \psi } _ { k } ^ { ( \uparrow ) } \int _ { 0 } ^ { W _ { k } } \left( W _ { k } - \widetilde { W } _ { k } \right) d P _ { W _ { k } }$
+    $+\widehat { \psi } _ { k } ^ { ( \downarrow ) } \int _ { \widetilde { W } _ { k } } ^ { W ^ { ( m a x ) } } \left( W _ { k } - \widetilde { W } _ { k } \right) d P _ { W _ { k } }$
+    \item $\ldots$ where $\widehat { \psi } _ { k } ^ { ( \uparrow ) }= \int _ { 0 } ^ { + \infty } \psi _ { k } ^ { ( \uparrow ) } d P _ { \psi _ { k } ^ { ( \uparrow ) } }$
+    \item $\ldots$ and $\widehat { \psi } _ { k } ^ { ( \downarrow ) } = \int _ { - \infty } ^ { 0 } \psi _ { k } ^ { ( \downarrow ) } d P _ { \psi _ { k } ^ { ( \downarrow ) } }$
+  \end{itemize}
+\end{block}
+
+\begin{block}{Remark}
+  \begin{itemize}
+    \item Are $\acc{\psi _ { k,t } ^ { ( \downarrow ) }}_t$ and
+    $\acc{\psi _ { k,t } ^ { ( \uparrow ) }}_t$ stationary ?
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Solution of the SOP}
+\begin{block}{Solution}
+  \begin{itemize}
+    \item $\widetilde { W } _ { k } = F _ { W _ { k } } ^ { - 1 } \left( \frac { \left| \widehat { \psi } _ { k } ^ { ( \downarrow ) } \right| } { \widehat { \psi } _ { k } ^ { ( \uparrow ) } + \left| \widehat { \psi } _ { k } ^ { ( \downarrow ) } \right| } \right)$
+    \item $F _ { W _ { k } }$ cumulative distribution function of $W _ { k }$.
+  \end{itemize}
+
+  \begin{block}{Remark}
+    \begin{itemize}
+      \item A probabilistic forecast of $W_k$ is needed
+    \end{itemize}
+  \end{block}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Probabilistic forecast of $W_k$}
+\begin{exampleblock}{Probabilistic forecast of production for a wind power portfolio in Eastern Denmark provided at 11 AM.}
+  \begin{figure}
+    \centering
+      \includegraphics[width=0.9\textwidth]{Proba_forec}
+  \end{figure}
+\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}\frametitle{}
+\begin{block}{}
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{}
+\begin{block}{}
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{block}
+\end{frame}
