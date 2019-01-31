@@ -2,48 +2,103 @@
 \titlepage
 \end{frame}
 
+\begin{frame}\frametitle{What is the article about ?}
+  \begin{block}{Context}
+    \begin{itemize}
+    \item Portfolio of wind energy (can be solar)
+    \item Liberalized electricity markets
+  \end{itemize}
+  \end{block}
 
-\begin{frame}\frametitle{blocs}
-
-\begin{block}{title of the bloc}
-bloc text
-\end{block}
-
-\begin{exampleblock}{title of the bloc}
-bloc text
-\end{exampleblock}
-
-
-\begin{alertblock}{title of the bloc}
-bloc text
-\end{alertblock}
+  \begin{block}{Goals}
+    \begin{itemize}
+      \item Propose an operational trading strategy (\textit{based on the quantile of wind power production})
+      \item Assess its performance
+    \end{itemize}
+  \end{block}
+  \begin{block}{Inputs of the model}
+    Forecasts of
+    \begin{itemize}
+      \item  Wind power production
+      \item Spot market prices
+      \item Imbalance prices (\textit{regulating market prices})
+    \end{itemize}
+  \end{block}
+  \textit{Remark : Not a forecasting problem !}
 \end{frame}
 
-\begin{frame}\frametitle{splitting screen}
-\begin{columns}
-\begin{column}{5cm}
 
-
+\begin{frame}\frametitle{What are the main assumptions ?}
+\begin{block}{Assumptions}
 \begin{itemize}
-\item Beamer
-\item Beamer Class
-\item Beamer Class Latex
+  \item Price-taker %(\textit{clearing price often below in the stack})
+  % On fait un stack des differentes offre en fonction du prix est des quantités proposés
+  % et on coupe à la demande (la demande fait le prix), on appelle ça le clearing price.
+  % Nous on vendait souvent à 10 euros tandis que ça clear autour de 50. Il est arrivé
+  % 2 fois que l'on est pas été exécuté.
+  \item No practical limitations
+  % totalement faux en suisse ou il ne supporte pas l'imbalance, sinon c'est
+  %max du 40% règle implicite du marché sous peine de recevoir une lettre du
+  % régulateur
+  \item Don't care about the risk : only the long run matters , ie we may face
+  severe losses on the short run
+  % argent pas illimité, tu seras viré avant
+  \item No curtailment % argument de tant que les prix sont positifs c'est pas
+  %economiquement viable de curtailer sauf que c'est le TSO qui curtail et lui
+  % il s'en fou de si c'est viable ou pas car ce qui l'interesse c'est de pas avoir
+  % trop d'imbalance dans le systeme. D'autant plus que c'est un facteur important
+  % a prendre en compte car si en italie l'imbalance du au curtailment est recompense
+  % au prix du DA ce n'est pas le cas en allemagne, donc c'est un grand facteur de risque
+  \item PTU (\textit{Program Time Unit}) are independent : no market dynamic.
+  % utile pour pouvoir les traités à part
+  \item Imbalance volumes are never rewarded
+  %je ne connais pas un marché ou ce soit vrai.
 \end{itemize}
-
-\end{column}
-\begin{column}{5cm}
-
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Instructor} & \textbf{Title} \\
-\hline
-Sascha Frank &  \LaTeX \ Course 1 \\
-\hline
-Sascha Frank &  Course serial  \\
-\hline
-\end{tabular}
-
-\end{column}
-\end{columns}
-
+\end{block}
 \end{frame}
+
+%
+% \begin{frame}\frametitle{blocs}
+%
+% \begin{block}{title of the bloc}
+% bloc text
+% \end{block}
+%
+% \begin{exampleblock}{title of the bloc}
+% bloc text
+% \end{exampleblock}
+%
+%
+% \begin{alertblock}{title of the bloc}
+% bloc text
+% \end{alertblock}
+% \end{frame}
+%
+% \begin{frame}\frametitle{splitting screen}
+% \begin{columns}
+% \begin{column}{5cm}
+%
+%
+% \begin{itemize}
+% \item Beamer
+% \item Beamer Class
+% \item Beamer Class Latex
+% \end{itemize}
+%
+% \end{column}
+% \begin{column}{5cm}
+%
+% \begin{tabular}{|c|c|}
+% \hline
+% \textbf{Instructor} & \textbf{Title} \\
+% \hline
+% Sascha Frank &  \LaTeX \ Course 1 \\
+% \hline
+% Sascha Frank &  Course serial  \\
+% \hline
+% \end{tabular}
+%
+% \end{column}
+% \end{columns}
+%
+% \end{frame}
